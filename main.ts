@@ -18,22 +18,20 @@ function playMelody () {
 input.onButtonPressed(Button.B, function () {
     radio.sendValue("message", message_id)
     music.play(music.tonePlayable(196, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
-    basic.showString("Gesendet:")
+    basic.showString("S:")
     messages[message_id].showImage(0)
 })
 radio.onReceivedValue(function (name, value) {
     if (name == "message") {
         message_id = value
         music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
-        basic.showString("Freund sagt:")
+        basic.showString("R:")
         messages[message_id].showImage(0)
     }
 })
 let messages: Image[] = []
 let message_id = 0
 radio.setGroup(1)
-music.setBuiltInSpeakerEnabled(true)
-basic.showString("Hello Mertens!")
 message_id = 0
 messages = [
 images.iconImage(IconNames.Duck),
@@ -41,5 +39,7 @@ images.iconImage(IconNames.Rollerskate),
 images.iconImage(IconNames.Giraffe),
 images.iconImage(IconNames.Ghost),
 images.iconImage(IconNames.Tortoise),
-images.iconImage(IconNames.Snake)
+images.iconImage(IconNames.Snake),
+images.iconImage(IconNames.Pitchfork)
 ]
+basic.showString("Hello Mertens!")
