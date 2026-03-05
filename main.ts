@@ -7,6 +7,7 @@ input.onButtonPressed(Button.A, function () {
 })
 input.onButtonPressed(Button.AB, function () {
     playMelody()
+    basic.showString("Hello Mertens!")
 })
 function playMelody () {
     music.play(music.stringPlayable("C E C E G - G - ", 170), music.PlaybackMode.UntilDone)
@@ -24,13 +25,14 @@ radio.onReceivedValue(function (name, value) {
     if (name == "message") {
         message_id = value
         music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
-        basic.showString("Nachricht gekommen:")
+        basic.showString("Freund sagt:")
         messages[message_id].showImage(0)
     }
 })
 let messages: Image[] = []
 let message_id = 0
 radio.setGroup(1)
+music.setBuiltInSpeakerEnabled(true)
 basic.showString("Hello Mertens!")
 message_id = 0
 messages = [
